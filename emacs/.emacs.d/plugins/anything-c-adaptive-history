@@ -1,0 +1,3 @@
+;; -*- mode: emacs-lisp -*-
+;; History entries used for anything adaptive display.
+(setq anything-c-adaptive-history (quote ((command ("fill-region" ("fill" . 1)) ("fill-nonuniform-paragraphs" ("fill" . 1)) ("fill-individual-paragraphs" ("fill" . 1)) ("fill-region-as-paragraph" ("fill" . 1)) ("fill-paragraph" ("fill" . 1)) ("end-of-buffer" ("end-of" . 1))) (buffer ("*Messages*" ("" . 2)) ("*scratch*" ("" . 1)) ("200807102ss.txt" ("" . 1))))))

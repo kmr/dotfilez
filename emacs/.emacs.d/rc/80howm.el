@@ -1,0 +1,21 @@
+;; howm memo
+(add-to-list 'load-path "~/.emacs.d/plugins/howm/")
+(setq howm-menu-lang 'ja)
+(require 'howm)
+(global-set-key "\C-c,," 'howm-menu)
+(setq howm-list-recent-title t)
+(setq howm-menu-schedule-days-before 10)
+(setq howm-menu-schedule-days 3)
+(setq howm-directory "~/memo/")
+(setq howm-file-name-format "%Y/%m/%Y_%m.howm")
+(add-hook 'howm-mode-hook
+  '(lambda()
+    (define-key howm-mode-map "\C-cd" 'howm-insert-dtime)
+    (define-key howm-mode-map "\C-cn" 'howm-next-memo)
+    (define-key howm-mode-map "\C-cla" 'howm-list-all)
+    (define-key howm-mode-map "\C-clr" 'howm-list-recent)
+    (define-key howm-mode-map "\C-clg" 'howm-list-grep)
+    (define-key howm-mode-map "\C-clm" 'howm-list-migemo)
+    (define-key howm-mode-map "\C-cf" 'howm-first-memo)
+    (define-key howm-mode-map "\C-ct" 'howm-create-here)))
+
