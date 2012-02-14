@@ -17,8 +17,12 @@
       nt-p      (eq system-type 'windows-nt)
       meadow-p  (featurep 'meadow)
       windows-p (or cygwin-p nt-p meadow-p))
+(setq cosole-p  (eq window-system nil))
 
-(when ns-p
+(message (format "window-system enabled: %s" (prin1-to-string window-system)))
+
+;;(when ns-p
+(cond (window-system
   (progn
     (let* ((fontset-name "myfonts")
       (size 14)
@@ -41,7 +45,7 @@
 ;;      (".*monaco cy-bold-.*-mac-cyrillic" . 0.9)
 ;;      (".*monaco-bold-.*-mac-roman" . 0.9)))
 ;;    (add-to-list 'face-font-rescale-alist elt))
-  ))
+;;)
 
-(add-to-list 'default-frame-alist '(font . "fontset-myfonts"))
-(set-face-font 'default "fontset-myfonts")
+      (add-to-list 'default-frame-alist '(font . "fontset-myfonts"))
+      (set-face-font 'default "fontset-myfonts"))))
