@@ -1,0 +1,9 @@
+#! /bin/sh
+
+/usr/local/bin/tmux save-buffer $HOME/.tmux_to_pbcopy
+cat $HOME/.tmux_to_pbcopy | reattach-to-user-namespace pbcopy
+
+# 下記は表示だけなのでなくてもOK
+HEAD=`head -1 $HOME/.tmux_to_pbcopy`
+TAIL=`tail -1 $HOME/.tmux_to_pbcopy`
+tmux display-message "Copy:  $HEAD  -  $TAIL"

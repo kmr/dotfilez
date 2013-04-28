@@ -182,7 +182,7 @@ alias .='source' s='source'  # ソース
 alias e='emacs'  # emacs起動
 alias vi='vim'  # vim起動
 alias screen='screen -xR'  # screenセッションが居る場合はアタッチ
-alias tmux='tmux attach || tmux'  # tmuxセッションがある場合はアタッチ
+alias runtmux='~/bin/runtmux'  # tmuxセッションがある場合はアタッチ
 alias nave='~/.nave/nave/nave.sh'  # nave (node.js)
 # OS依存エイリアス
 case "${OSTYPE}" in
@@ -205,10 +205,20 @@ export LANG=ja_JP.UTF-8  # UTF-8
 export PAGER='lv'  # pagerはlv
 unset LESSCHARSET  # lessの文字化け防止
 # パス
-export PATH=~/bin:~/opt/sbin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:${PATH}
+export PATH=~/bin:~/opt/sbin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:${PATH}
+#export PATH="~/.rbenv/bin:$PATH"
+#eval "$(rbenv init -)"
+
+# boxen
+case "${OSTYPE}" in
+darwin*)
+  [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
+  ;;
+esac
+
 export GIT_SSL_NO_VERIFY=1  # gitでSSLサーバ証明書検証しない
 # ライブラリパス
-export LD_LIBRARY_PATH=${LD_LIBRARY_DIR}:/usr/local/lib:/opt/local/lib
+# export LD_LIBRARY_PATH=${LD_LIBRARY_DIR}:/usr/local/lib:/opt/local/lib
 # OS依存環境変数
 case "${OSTYPE}" in
 linux*)
@@ -218,5 +228,17 @@ linux*)
   export XMODIFIERS="@im=ibus"
   export XIM_PROGRAM=ibus-daemon
   export XIM_ARGS="-r --daemonize --xim"
+  ;;
+esac
+# OS type
+case "${OSTYPE}" in
+darwin*)
+  export OS_TYPE="darwin"
+  ;;
+linux*)
+  export OS_TYPE="linux"
+  ;;
+windows*)
+  export OS_TYPE="windows"
   ;;
 esac
